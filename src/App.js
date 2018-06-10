@@ -1,32 +1,25 @@
-import 'bootstrap/dist/css/bootstrap-theme.css';
-import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
-import { Grid, Nav, Navbar, NavItem, Row } from 'react-bootstrap';
+import { Col, Container, Icon, Navbar, NavItem, Row, } from 'react-materialize';
 import { Link, Route } from 'react-router-dom';
-import About from "./views/About";
-import Home from "./views/Home";
+import { About, Catalog } from "./containers";
 
 const App = () => (
-  <div>
-    <Navbar inverse collapseOnSelect>
-      <Navbar.Header>
-        <Navbar.Brand>
-          <Link to="/">Thatcalendar SPA</Link>
-        </Navbar.Brand>
-      </Navbar.Header>
-      <Nav>
-        <NavItem>
-          <Link to="/about">About</Link>
-        </NavItem>
-      </Nav>
+  <Row>
+    <Navbar brand='ExReactShop' right divider>
+      <NavItem componentClass={Link} href='/about'>About</NavItem>
+      <NavItem href='get-started.html'><Icon value={5}>shopping_cart</Icon></NavItem>
+      4
     </Navbar>
-    <Grid>
-      <Row className="show-grid">
-        <Route exact path="/" component={Home}/>
-        <Route exact path="/about" component={About}/>
+
+    <Container>
+      <Row>
+        <Col s={12}>
+          <Route exact path="/" component={Catalog}/>
+          <Route exact path="/about" component={About}/>
+        </Col>
       </Row>
-    </Grid>
-  </div>
+    </Container>
+  </Row>
 );
 
 export default App;
