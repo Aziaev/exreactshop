@@ -1,7 +1,9 @@
 import About from './About';
+import Cart from './Cart';
 import Catalog from './Catalog';
 
 export {
-  Catalog,
-  About
+  About,
+  Cart,
+  Catalog
 };
