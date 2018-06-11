@@ -20,6 +20,7 @@ export default (state = initialState, action) => {
 }
 
 export const updateCart = (fieldName,  itemId) => {
+  console.log(`updatecart`);
   return dispatch => {
     switch (fieldName) {
       case ADD:

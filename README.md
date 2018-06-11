@@ -1,5 +1,5 @@
 # Exreactshop
-Simple react redux based online shop
+Simple react redux based online shop with Materialize UI
 
 ## How to start
 Go to **/----/**
