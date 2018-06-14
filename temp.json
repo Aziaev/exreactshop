@@ -1,24 +1,5 @@
 {
-  "match": {
-    "path": "/",
-    "url": "/",
-    "isExact": true,
-    "params": {}
-  },
-  "location": {
-    "pathname": "/",
-    "search": "",
-    "hash": ""
-  },
-  "history": {
-    "length": 50,
-    "action": "POP",
-    "location": {
-      "pathname": "/",
-      "search": "",
-      "hash": ""
-    }
-  },
+  "cart": [],
   "stock": [
     {
       "item": {

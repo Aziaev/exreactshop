@@ -1,35 +1,44 @@
 import React, { Component } from 'react';
+import { Col, Container, Row, } from 'react-materialize';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CatalogItem } from '../components/index';
-import { updateCart } from './../modules/shop';
+import { CatalogItem, Navigation } from '../components';
+import { addToCart } from './../modules/shop';
+import { getCartSize } from '../helpers';
 
 class Catalog extends Component {
   render() {
-    console.log(`CATALOG PROPS = ${JSON.stringify(this.props)}`);
-    const { stock, updateCart } = this.props;
+    const { cart, stock, addToCart } = this.props;
     return (
       <div>
-        <h2>Catalog</h2>
-        {
-          stock.map((product, index) =>
-            <CatalogItem
-              key={index}
-              onAddAction={updateCart}
-              {...product}
-            />)
-        }
+        <Navigation cartSize={getCartSize(cart)}/>
+        <Container>
+          <Row>
+            <Col s={12}>
+              <h2>Catalog</h2>
+              {
+                stock.map((product, index) =>
+                  <CatalogItem
+                    key={index}
+                    addToCart={addToCart}
+                    {...product}
+                  />)
+              }
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  stock: state.shop.stock
+  stock: state.shop.stock,
+  cart: state.shop.cart
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  updateCart
+  addToCart
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Catalog);

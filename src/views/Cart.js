@@ -1,55 +1,57 @@
 import React, { Component } from 'react';
-import { Icon, Table } from 'react-materialize';
+import { Button, Col, Container, Modal, Row } from 'react-materialize';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { STOCK } from '../constants/index';
-import { updateCart } from './../modules/shop';
+import { CartTable, Navigation } from '../components';
+import { getCartCost, getCartFullData, getCartSize } from '../helpers';
+import { addToCart, reduceQuantity, removeFromCart } from './../modules/shop';
 
 class Cart extends Component {
-
   render() {
-    console.log(`cart PROPS = ${JSON.stringify(this.props)}`);
-    const { cart} = this.props;
+    const { addToCart, cart, reduceQuantity, removeFromCart } = this.props;
+    const cartWithFullData = getCartFullData(cart);
+    const cartSize = getCartSize(cart);
+    const cartCost = getCartCost(cartWithFullData);
     return (
       <div>
-        <h2>Shopping cart</h2>
-        <Table hoverable>
-          <thead>
-          <tr>
-            <th data-field="name">Name</th>
-            <th data-field="quantity">Qnt</th>
-            <th data-field="price">Price</th>
-            <th data-field="delete">Delete</th>
-          </tr>
-          </thead>
-
-          <tbody>
-          {
-            STOCK.map((product, index) =>
-              <tr key={index}>
-                <td>{product.item.name}</td>
-                <td><Icon>remove</Icon>{product.stock}<Icon>add</Icon></td>
-                <td>{`${product.item.price}₽`}</td>
-                <td><Icon>clear</Icon></td>
-              </tr>)
-          }
-          {
-            cart.map((product, index) =>
-              <tr key={index}>
-                <td>{product.item.name}</td>
-                <td><Icon>remove</Icon> {product.stock} <Icon>add</Icon></td>
-                <td>{`${product.item.price}₽`}</td>
-                <td><Icon>clear</Icon></td>
-              </tr>)
-          }
-          </tbody>
-        </Table>
-        <hr/>
-        <h5>Итого: {
-          STOCK.reduce(((sum, product) => {
-              return sum + +product.item.price * product.stock;
-            }
-          ), 0)} ₽</h5>
+        <Navigation cartSize={cartSize}/>
+        <Container>
+          <Row>
+            <Col s={12}>
+              <h2>Shopping cart</h2>
+              {cartWithFullData.length === 0 ?
+                <div>
+                  <hr/>
+                  <h5>Cart is empty</h5>
+                </div>
+                :
+                <div>
+                  <CartTable
+                    cart={cartWithFullData}
+                    addToCart={addToCart}
+                    reduceQuantity={reduceQuantity}
+                    removeFromCart={removeFromCart}
+                  />
+                  <hr/>
+                  <h5>Total: {cartCost} ₽</h5>
+                  <Modal
+                    header='Cart total'
+                    trigger={
+                      <Button className='blue'>Check Out</Button>
+                    }>
+                    <CartTable cart={cartWithFullData}/>
+                    <hr/>
+                    <h5>Total: {cartCost} ₽</h5>
+                    <hr/>
+                    Serialized cart:
+                    <div>
+                      <pre>{JSON.stringify(cartWithFullData, null, 2)}</pre>
+                    </div>
+                  </Modal>
+                </div>}
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }
@@ -60,7 +62,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  updateCart
+  addToCart,
+  reduceQuantity,
+  removeFromCart,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
