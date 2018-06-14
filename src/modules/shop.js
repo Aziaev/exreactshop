@@ -1,4 +1,5 @@
 import { ADD_TO_CART, initialState, REDUCE_QUANTITY, REMOVE_FROM_CART } from '../constants';
+import { FETCH_FROM_STORAGE, PUSH_TO_STORAGE } from '../constants/index';
 
 export default (state = initialState, action) => {
   const { itemId, type } = action;
@@ -39,6 +40,21 @@ export default (state = initialState, action) => {
         ...state,
         cart: reducedCart
       };
+
+    case FETCH_FROM_STORAGE:
+      const fetchedCart = JSON.parse(localStorage.getItem('cart'));
+      console.log(`fetched from localstorage ${JSON.stringify(fetchedCart)}`);
+      return {
+        ...state,
+        cart: [...fetchedCart]
+      };
+      return state;
+
+    case PUSH_TO_STORAGE:
+      const storedCart = [...state.cart];
+      console.log(`PUSH_TO_STORAGE ${JSON.stringify(storedCart)}`);
+      localStorage.setItem('cart', JSON.stringify(storedCart));
+      return state;
     default:
       return state;
   }
@@ -67,6 +83,24 @@ export const reduceQuantity = (itemId) => {
     return dispatch({
       type: REDUCE_QUANTITY,
       itemId: itemId
+    });
+  };
+};
+
+export const fetchFromLocalStorage = () => {
+  console.log(`fetchFromLocalStorage!!!`);
+  return dispatch => {
+    return dispatch({
+      type: FETCH_FROM_STORAGE
+    });
+  };
+};
+
+export const pushToLocalStorage = () => {
+  console.log(`pushToLocalStorage!!!`);
+  return dispatch => {
+    return dispatch({
+      type: PUSH_TO_STORAGE
     });
   };
 };

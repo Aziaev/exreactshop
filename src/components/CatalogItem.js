@@ -20,7 +20,7 @@ export default function (props) {
         <Button
           className='cyan'
           waves='light'
-          onClick={() => addToCart(id)}>В корзину</Button>
+          onClick={() => addToCart(id)}>Add to cart</Button>
       </Card>
     </Col>
   );

@@ -4,9 +4,24 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { CartTable, Navigation } from '../components';
 import { getCartCost, getCartFullData, getCartSize } from '../helpers';
-import { addToCart, reduceQuantity, removeFromCart } from './../modules/shop';
+import { addToCart, reduceQuantity, removeFromCart, fetchFromLocalStorage, pushToLocalStorage } from './../modules/shop';
 
 class Cart extends Component {
+  componentWillMount() {
+    const { cart, fetchFromLocalStorage } = this.props;
+    if (cart.length === 0) {
+      fetchFromLocalStorage();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { cart, pushToLocalStorage } = this.props;
+    const preCart = prevProps.cart;
+    if (preCart !== cart) {
+      pushToLocalStorage(cart);
+    }
+  }
+
   render() {
     const { addToCart, cart, reduceQuantity, removeFromCart } = this.props;
     const cartWithFullData = getCartFullData(cart);
@@ -63,6 +78,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   addToCart,
+  fetchFromLocalStorage,
+  pushToLocalStorage,
   reduceQuantity,
   removeFromCart,
 }, dispatch);

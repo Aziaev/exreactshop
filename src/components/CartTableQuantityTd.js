@@ -1,19 +1,18 @@
 import React from 'react';
-import { Icon } from 'react-materialize';
 
 export default function (props) {
   const { id, quantity, reduceQuantity, addToCart } = props;
   return (
     <div>
       {reduceQuantity &&
-      <div onClick={() => reduceQuantity(id)}>
-        <Icon>remove</Icon>
+      <div onClick={() => reduceQuantity(id)} style={{ display: 'inline-flex', padding: '15px' }}>
+        <h5>-</h5>
       </div>
       }
-      {quantity}
+      <div style={{ display: 'inline-flex' }}>{quantity}</div>
       {addToCart &&
-      <div onClick={() => addToCart(id)}>
-        <Icon>add</Icon>
+      <div onClick={() => addToCart(id)} style={{ display: 'inline-flex', padding: '15px' }}>
+        <h5>+</h5>
       </div>
       }
     </div>
