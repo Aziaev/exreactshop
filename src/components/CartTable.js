@@ -1,18 +1,19 @@
 import React from 'react';
 import { Button, Icon, Table } from 'react-materialize';
 import CartTableQuantityTd from './CartTableQuantityTd';
+import TableHeaderWithButton from './HeaderButton';
 
 export default function (props) {
-  const { cart, reduceQuantity, addToCart, removeFromCart, setSort } = props;
+  const { cart, reduceQuantity, addToCart, removeFromCart } = props;
 
   return (
-    <Table hoverable>
+    <Table hoverable centered>
       <thead>
       <tr>
-        <th data-field="name" onClick={() => setSort('name')}>Name</th>
-        <th data-field="quantity" onClick={() => setSort('quantity')}>Qnt</th>
-        <th data-field="price" onClick={() => setSort('price')}>Price</th>
-        {removeFromCart && <th data-field="control">Control</th>}
+        <TableHeaderWithButton fieldName={"name"} {...props}/>
+        <TableHeaderWithButton fieldName={"quantity"} {...props}/>
+        <TableHeaderWithButton fieldName={"price"} {...props}/>
+        {removeFromCart && <th data-field="control"><Button flat disabled>Remove</Button></th>}
       </tr>
       </thead>
       <tbody>
@@ -31,7 +32,7 @@ export default function (props) {
             <td>{`${product.price}₽`}</td>
             {removeFromCart &&
             <td>
-              <Button onClick={() => removeFromCart(product.id)}>
+              <Button flat onClick={() => removeFromCart(product.id)}>
                 <Icon>clear</Icon>
               </Button>
             </td>

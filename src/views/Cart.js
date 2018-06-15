@@ -30,7 +30,7 @@ class Cart extends Component {
   }
 
   render() {
-    const { addToCart, cartSize, cartCost, sortedCart, reduceQuantity, removeFromCart, setSort } = this.props;
+    const { addToCart, cartSize, cartCost, sortedCart, sortedBy, sortOrder, reduceQuantity, removeFromCart, setSort } = this.props;
     return (
       <div>
         <Navigation cartSize={cartSize}/>
@@ -51,6 +51,8 @@ class Cart extends Component {
                     reduceQuantity={reduceQuantity}
                     removeFromCart={removeFromCart}
                     setSort={setSort}
+                    sortedBy={sortedBy}
+                    sortOrder={sortOrder}
                   />
                   <hr/>
                   <h5>Total: {cartCost} ₽</h5>
@@ -83,9 +85,11 @@ const mapStateToProps = state => {
   const cartSize = getCartSize(sortedCart);
   const cartCost = getCartCost(sortedCart);
   return {
+    sortedBy,
+    sortOrder,
     sortedCart,
     cartSize,
-    cartCost
+    cartCost,
   };
 };
 

@@ -3,7 +3,7 @@ import { Col, Container, Row, } from 'react-materialize';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { CatalogItem, Navigation } from '../components';
-import { getCartSize, getSortedFullDataCart } from '../helpers';
+import { getCartSize, getRandomNumber, getSortedFullDataCart } from '../helpers';
 import { addToCart, fetchFromLocalStorage, pushToLocalStorage } from './../modules/shop';
 
 class Catalog extends Component {
@@ -22,11 +22,19 @@ class Catalog extends Component {
     }
   }
 
+  putToCartRandomly() {
+    const randomCartSize = getRandomNumber();
+    for (let i = 0; i < randomCartSize; i++) {
+      const randomProductId = getRandomNumber();
+      this.props.addToCart(randomProductId);
+    }
+  }
+
   render() {
     const { cartSize, stock, addToCart } = this.props;
     return (
       <div>
-        <Navigation cartSize={cartSize}/>
+        <Navigation cartSize={cartSize} putToCartRandomly={() => this.putToCartRandomly()}/>
         <Container>
           <Row>
             <Col s={12}>

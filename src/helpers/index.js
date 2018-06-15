@@ -1,6 +1,8 @@
 import { ASC, DESC } from '../constants/index';
 import { CATALOG } from './../constants';
 
+export const getRandomNumber = () => Math.floor(Math.random() * 5 + 1);
+
 export const getProductById = id => {
   return CATALOG.find((item) => item.id === id);
 };

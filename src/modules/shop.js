@@ -52,10 +52,14 @@ export default (state = initialState, action) => {
 
     case FETCH_FROM_STORAGE:
       const fetchedCart = JSON.parse(localStorage.getItem('cart'));
-      return {
-        ...state,
-        cart: [...fetchedCart]
-      };
+      if (!fetchedCart){
+        return state;
+      } else {
+        return {
+          ...state,
+          cart: [...fetchedCart]
+        };
+      }
 
     case PUSH_TO_STORAGE:
       const storedCart = [...state.cart];
