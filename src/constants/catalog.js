@@ -28,7 +28,7 @@ export const CATALOG = [
   },
   {
     id: 3,
-    name: 'iPhone 8 plus Black',
+    name: 'iPhone 8 Plus Black',
     title: iphone8Title,
     description: iphone8description,
     img: i8plusB,
@@ -36,7 +36,7 @@ export const CATALOG = [
   },
   {
     id: 4,
-    name: 'iPhone 8 plus Gold',
+    name: 'iPhone 8 Plus Gold',
     title: iphone8Title,
     description: iphone8description,
     img: i8plusG,

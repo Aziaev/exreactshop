@@ -3,7 +3,7 @@ import { Col, Container, Row, } from 'react-materialize';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { CatalogItem, Navigation } from '../components';
-import { getCartSize } from '../helpers';
+import { getCartSize, getSortedFullDataCart } from '../helpers';
 import { addToCart, fetchFromLocalStorage, pushToLocalStorage } from './../modules/shop';
 
 class Catalog extends Component {
@@ -23,10 +23,10 @@ class Catalog extends Component {
   }
 
   render() {
-    const { cart, stock, addToCart } = this.props;
+    const { cartSize, stock, addToCart } = this.props;
     return (
       <div>
-        <Navigation cartSize={getCartSize(cart)}/>
+        <Navigation cartSize={cartSize}/>
         <Container>
           <Row>
             <Col s={12}>
@@ -47,10 +47,16 @@ class Catalog extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  stock: state.shop.stock,
-  cart: state.shop.cart
-});
+const mapStateToProps = state => {
+  const { cart, sortedBy, sortOrder } = state.shop;
+  const sortedCart = getSortedFullDataCart(cart, sortedBy, sortOrder);
+  const cartSize = getCartSize(sortedCart);
+  return {
+    stock: state.shop.stock,
+    cart: state.shop.cart,
+    cartSize
+  };
+};
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   addToCart,

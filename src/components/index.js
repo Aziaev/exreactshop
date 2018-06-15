@@ -1,5 +1,5 @@
-import CatalogItem from './CatalogItem';
 import CartTable from './CartTable';
+import CatalogItem from './CatalogItem';
 import Navigation from './Navigation';
 
 export {

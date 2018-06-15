@@ -3,30 +3,34 @@ import { Button, Col, Container, Modal, Row } from 'react-materialize';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { CartTable, Navigation } from '../components';
-import { getCartCost, getCartFullData, getCartSize } from '../helpers';
-import { addToCart, reduceQuantity, removeFromCart, fetchFromLocalStorage, pushToLocalStorage } from './../modules/shop';
+import { getCartCost, getCartSize, getSortedFullDataCart } from '../helpers';
+import {
+  addToCart,
+  fetchFromLocalStorage,
+  pushToLocalStorage,
+  reduceQuantity,
+  removeFromCart,
+  setSort
+} from './../modules/shop';
 
 class Cart extends Component {
   componentWillMount() {
-    const { cart, fetchFromLocalStorage } = this.props;
-    if (cart.length === 0) {
+    const { sortedCart, fetchFromLocalStorage } = this.props;
+    if (sortedCart.length === 0) {
       fetchFromLocalStorage();
     }
   }
 
   componentDidUpdate(prevProps) {
-    const { cart, pushToLocalStorage } = this.props;
-    const preCart = prevProps.cart;
-    if (preCart !== cart) {
-      pushToLocalStorage(cart);
+    const { sortedCart, pushToLocalStorage } = this.props;
+    const prevCart = prevProps.cart;
+    if (prevCart !== sortedCart) {
+      pushToLocalStorage(sortedCart);
     }
   }
 
   render() {
-    const { addToCart, cart, reduceQuantity, removeFromCart } = this.props;
-    const cartWithFullData = getCartFullData(cart);
-    const cartSize = getCartSize(cart);
-    const cartCost = getCartCost(cartWithFullData);
+    const { addToCart, cartSize, cartCost, sortedCart, reduceQuantity, removeFromCart, setSort } = this.props;
     return (
       <div>
         <Navigation cartSize={cartSize}/>
@@ -34,7 +38,7 @@ class Cart extends Component {
           <Row>
             <Col s={12}>
               <h2>Shopping cart</h2>
-              {cartWithFullData.length === 0 ?
+              {sortedCart.length === 0 ?
                 <div>
                   <hr/>
                   <h5>Cart is empty</h5>
@@ -42,10 +46,11 @@ class Cart extends Component {
                 :
                 <div>
                   <CartTable
-                    cart={cartWithFullData}
+                    cart={sortedCart}
                     addToCart={addToCart}
                     reduceQuantity={reduceQuantity}
                     removeFromCart={removeFromCart}
+                    setSort={setSort}
                   />
                   <hr/>
                   <h5>Total: {cartCost} ₽</h5>
@@ -54,13 +59,13 @@ class Cart extends Component {
                     trigger={
                       <Button className='blue'>Check Out</Button>
                     }>
-                    <CartTable cart={cartWithFullData}/>
+                    <CartTable cart={sortedCart}/>
                     <hr/>
                     <h5>Total: {cartCost} ₽</h5>
                     <hr/>
                     Serialized cart:
                     <div>
-                      <pre>{JSON.stringify(cartWithFullData, null, 2)}</pre>
+                      <pre>{JSON.stringify(sortedCart, null, 2)}</pre>
                     </div>
                   </Modal>
                 </div>}
@@ -72,9 +77,17 @@ class Cart extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  cart: state.shop.cart
-});
+const mapStateToProps = state => {
+  const { cart, sortedBy, sortOrder } = state.shop;
+  const sortedCart = getSortedFullDataCart(cart, sortedBy, sortOrder);
+  const cartSize = getCartSize(sortedCart);
+  const cartCost = getCartCost(sortedCart);
+  return {
+    sortedCart,
+    cartSize,
+    cartCost
+  };
+};
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   addToCart,
@@ -82,6 +95,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   pushToLocalStorage,
   reduceQuantity,
   removeFromCart,
+  setSort
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
