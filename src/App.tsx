@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
-import { Row, } from 'react-materialize';
+import * as React from 'react';
+import { Row } from 'react-materialize';
 import { Route } from 'react-router-dom';
-import { About, Cart, Catalog } from "./views/index";
+import Catalog from './views/Catalog';
+import About from './views/About';
+import Cart from './views/Cart';
 
-class App extends Component {
+class App extends React.Component<{}, {}> {
 
   render() {
     return (

@@ -1,9 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import App from "./App";
-import registerServiceWorker from './registerServiceWorker';
+import App from './App';
 import store, { history } from './store';
 
 const app = (
@@ -16,5 +15,4 @@ const app = (
   </Provider>
 );
 
-ReactDOM.render(app, document.getElementById('root'));
-registerServiceWorker();
+ReactDOM.render( app, document.getElementById( 'root' ) );

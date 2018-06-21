@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Button, Col, Container, Modal, Row } from 'react-materialize';
-import { connect } from 'react-redux';
+import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CartTable, Navigation } from '../components';
 import { getCartCost, getCartSize, getSortedFullDataCart } from '../helpers';
 import {
   addToCart,
@@ -12,25 +11,30 @@ import {
   removeFromCart,
   setSort
 } from './../modules/shop';
+import Navigation from '../components/Navigation';
+import CartTable from '../components/CartTable';
 
-class Cart extends Component {
+class Cart extends React.Component<ICart & ICartProps> {
   componentWillMount() {
     const { sortedCart, fetchFromLocalStorage } = this.props;
-    if (sortedCart.length === 0) {
+    if ( sortedCart.length === 0 ) {
       fetchFromLocalStorage();
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate( prevProps: ICart ) {
     const { sortedCart, pushToLocalStorage } = this.props;
     const prevCart = prevProps.cart;
-    if (prevCart !== sortedCart) {
-      pushToLocalStorage(sortedCart);
+    if ( prevCart !== sortedCart ) {
+      pushToLocalStorage( sortedCart );
     }
   }
 
   render() {
-    const { addToCart, cartSize, cartCost, sortedCart, sortedBy, sortOrder, reduceQuantity, removeFromCart, setSort } = this.props;
+    const {
+      addToCart, cartSize, cartCost, sortedCart, sortedBy,
+      sortOrder, reduceQuantity, removeFromCart, setSort
+    } = this.props;
     return (
       <div>
         <Navigation cartSize={cartSize}/>
@@ -57,17 +61,16 @@ class Cart extends Component {
                   <hr/>
                   <h5>Total: {cartCost} ₽</h5>
                   <Modal
-                    header='Cart total'
-                    trigger={
-                      <Button className='blue'>Check Out</Button>
-                    }>
+                    header="Cart total"
+                    trigger={<Button className="blue">Check Out</Button>}
+                  >
                     <CartTable cart={sortedCart}/>
                     <hr/>
                     <h5>Total: {cartCost} ₽</h5>
                     <hr/>
                     Serialized cart:
                     <div>
-                      <pre>{JSON.stringify(sortedCart, null, 2)}</pre>
+                      <pre>{JSON.stringify( sortedCart, null, 2 )}</pre>
                     </div>
                   </Modal>
                 </div>}
@@ -79,11 +82,11 @@ class Cart extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ( state: ICartState ): ICart => {
   const { cart, sortedBy, sortOrder } = state.shop;
-  const sortedCart = getSortedFullDataCart(cart, sortedBy, sortOrder);
-  const cartSize = getCartSize(sortedCart);
-  const cartCost = getCartCost(sortedCart);
+  const sortedCart = getSortedFullDataCart( cart, sortedBy, sortOrder );
+  const cartSize = getCartSize( sortedCart );
+  const cartCost = getCartCost( sortedCart );
   return {
     sortedBy,
     sortOrder,
@@ -93,14 +96,13 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({
+const mapDispatchToProps = ( dispatch: Dispatch<IAction> ) => bindActionCreators( {
   addToCart,
   fetchFromLocalStorage,
   pushToLocalStorage,
   reduceQuantity,
   removeFromCart,
   setSort
-}, dispatch);
+}, dispatch );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
-
+export default connect( mapStateToProps, mapDispatchToProps )( Cart );
