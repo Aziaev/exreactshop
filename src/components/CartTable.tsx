@@ -3,6 +3,17 @@ import { Button, Icon, Table } from 'react-materialize';
 import CartTableQuantityTd from './CartTableQuantityTd';
 import CartTableHeaderButton from './CartTableHeaderButton';
 
+/**
+ * Таблица для корзины
+ *
+ * @param props
+ *  cart - содержимое корзины
+ *  reduceQuantity - уменьшение количества на одну штуку
+ *  addToCart - добавление товара по id в корзину или увеличение количества на одну штуку
+ *  removeFromCart - удаление товара из корзины
+ *
+ * @returns - рендерит таблицу для корзины
+ */
 export default function ( props: any ) {
   const { cart, reduceQuantity, addToCart, removeFromCart } = props;
 

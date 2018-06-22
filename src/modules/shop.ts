@@ -87,24 +87,42 @@ export default ( state = initialState, action: IAction ) => {
   }
 };
 
-export const addToCart = ( itemId: number ) => {
+/**
+ * Добавление товара в корзину по id
+ *
+ * @param {number} id - уникальный идентификатор товара
+ * @returns {(dispatch: any) => any}
+ */
+export const addToCart = ( id: number ) => {
   return (dispatch: any) => {
     return dispatch( {
       type: ADD_TO_CART,
-      itemId: itemId
+      itemId: id
     } );
   };
 };
 
-export const removeFromCart = ( itemId: number ) => {
+/**
+ * Удаление товара из корзины по id
+ *
+ * @param {number} id
+ * @returns {(dispatch: any) => any}
+ */
+export const removeFromCart = ( id: number ) => {
   return (dispatch: any) => {
     return dispatch( {
       type: REMOVE_FROM_CART,
-      itemId: itemId
+      itemId: id
     } );
   };
 };
 
+/**
+ * Уменьшение товара в корзины по id на одну штуку
+ *
+ * @param {number} id
+ * @returns {(dispatch: any) => any}
+ */
 export const reduceQuantity = ( itemId: number ) => {
   return (dispatch: any) => {
     return dispatch( {
@@ -114,6 +132,11 @@ export const reduceQuantity = ( itemId: number ) => {
   };
 };
 
+/**
+ * Получение содержимого корзины из window.localStorage
+ *
+ * @returns {(dispatch: any) => any}
+ */
 export const fetchFromLocalStorage = () => {
   return (dispatch: any) => {
     return dispatch( {
@@ -122,6 +145,11 @@ export const fetchFromLocalStorage = () => {
   };
 };
 
+/**
+ * Сохранение содержимого корзины из window.localStorage
+ *
+ * @returns {(dispatch: any) => any}
+ */
 export const pushToLocalStorage = () => {
   return (dispatch: any) => {
     return dispatch( {
@@ -130,6 +158,12 @@ export const pushToLocalStorage = () => {
   };
 };
 
+/**
+ * Сортировка корзины по полю sortedBy
+ *
+ * @param {string} sortedBy
+ * @returns {(dispatch: any) => any}
+ */
 export const setSort = ( sortedBy: string ) => {
   return (dispatch: any) => {
     return dispatch( {

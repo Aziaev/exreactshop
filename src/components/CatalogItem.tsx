@@ -2,6 +2,15 @@ import * as React from 'react';
 import { Button, Card, CardTitle, Col } from 'react-materialize';
 import { getProductById } from '../helpers';
 
+/**
+ * Карточка товара
+ *
+ * @param {ICatalogItem} props
+ *  id - уникальный идентификатор товара
+ *  addToCart - добавление товара в корзину
+ *
+ * @returns - рендерит карточку товара
+ */
 export default function ( props: ICatalogItem ) {
   const { id, addToCart } = props;
   const item = getProductById( id );

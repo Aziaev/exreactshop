@@ -7,6 +7,9 @@ import * as actions from './../modules/shop';
 import Navigation from '../components/Navigation';
 import CartTable from '../components/CartTable';
 
+/**
+ * Контейнер-вью корзины
+ */
 class Cart extends React.Component<ICartState & ICartProps> {
   componentWillMount() {
     const { sortedCart, fetchFromLocalStorage } = this.props;

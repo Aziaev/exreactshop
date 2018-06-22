@@ -7,6 +7,9 @@ import * as actions from './../modules/shop';
 import Navigation from '../components/Navigation';
 import CatalogItem from '../components/CatalogItem';
 
+/**
+ * Контейнер-вью каталога
+ */
 class Catalog extends React.Component<ICatalogState & ICatalogProps> {
   componentWillMount() {
     const { cart, fetchFromLocalStorage } = this.props;
