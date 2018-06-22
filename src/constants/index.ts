@@ -1,6 +1,6 @@
 import CATALOG from './catalog';
 
-const initialState = {
+const initialState: IState = {
   cart: [],
   stock: CATALOG,
   sortedBy: null,

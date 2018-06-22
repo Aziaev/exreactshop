@@ -1,13 +1,10 @@
-interface ICatalog {
+interface ICatalogProps {
   cart: ICartItem[],
   stock: IStockItem[],
   cartSize: number,
-}
-
-interface ICatalogProps {
-  fetchFromLocalStorage(): {};
-  pushToLocalStorage( any: ICartItem[] ): {};
-  addToCart( id: number ): {};
+  fetchFromLocalStorage(): any;
+  pushToLocalStorage( any: ICartItem[] ): any;
+  addToCart( id: number ): any;
 }
 
 interface ICatalogState {
@@ -16,20 +13,13 @@ interface ICatalogState {
     stock: IStockItem[],
     sortedBy: string,
     sortOrder: string,
-  }
+  },
+  cartSize: number
 }
 
-interface ICatalogItem {
-  key: number,
-  id: number,
-  addToCart( id: number ): {};
-}
-
-interface IStockItem {
-  id: number,
-  name: string,
-  title: string,
-  description: string,
-  img: {},
-  price: number
+interface IState {
+  cart: ICartItem[],
+  stock: IStockItem[],
+  sortedBy: string,
+  sortOrder: string
 }

@@ -7,7 +7,7 @@ import * as actions from './../modules/shop';
 import Navigation from '../components/Navigation';
 import CatalogItem from '../components/CatalogItem';
 
-class Catalog extends React.Component<ICatalog & ICatalogProps> {
+class Catalog extends React.Component<ICatalogState & ICatalogProps> {
   componentWillMount() {
     const { cart, fetchFromLocalStorage } = this.props;
     if ( cart.length === 0 ) {
@@ -15,7 +15,7 @@ class Catalog extends React.Component<ICatalog & ICatalogProps> {
     }
   }
 
-  componentDidUpdate( prevProps: ICatalog ) {
+  componentDidUpdate( prevProps: ICatalogProps ) {
     const { cart, pushToLocalStorage } = this.props;
     const prevCart = prevProps.cart;
     if ( prevCart !== cart ) {

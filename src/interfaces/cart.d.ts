@@ -1,10 +1,10 @@
-interface ICart extends ICartState{
+interface ICart extends ICartState {
   sortedCart: ICartItem[],
   cartSize: number,
   cart: ICartItem[],
 }
 
-interface ICartState extends ICatalogState{
+interface ICartState extends ICatalogState {
   sortedBy: string,
   sortOrder: string,
   sortedCart: ICartItem[],
@@ -25,9 +25,9 @@ interface ICartItem {
 
 interface ICartProps {
   fetchFromLocalStorage(): any,
-  addToCart(): any,
+  addToCart( id: number ): any,
   fetchFromLocalStorage(): any,
-  pushToLocalStorage(any: ICartItem[]): any,
+  pushToLocalStorage( any: ICartItem[] ): any,
   reduceQuantity(): any,
   removeFromCart(): any,
   setSort(): any,

@@ -10,7 +10,7 @@ import {
   SET_SORT
 } from '../constants';
 
-export default ( state = initialState, action ) => {
+export default ( state = initialState, action: IAction ) => {
   const { itemId, type } = action;
 
   switch (type) {
@@ -87,8 +87,8 @@ export default ( state = initialState, action ) => {
   }
 };
 
-export const addToCart = ( itemId ) => {
-  return dispatch => {
+export const addToCart = ( itemId: number ) => {
+  return (dispatch: any) => {
     return dispatch( {
       type: ADD_TO_CART,
       itemId: itemId
@@ -96,8 +96,8 @@ export const addToCart = ( itemId ) => {
   };
 };
 
-export const removeFromCart = ( itemId ) => {
-  return dispatch => {
+export const removeFromCart = ( itemId: number ) => {
+  return (dispatch: any) => {
     return dispatch( {
       type: REMOVE_FROM_CART,
       itemId: itemId
@@ -105,8 +105,8 @@ export const removeFromCart = ( itemId ) => {
   };
 };
 
-export const reduceQuantity = ( itemId ) => {
-  return dispatch => {
+export const reduceQuantity = ( itemId: number ) => {
+  return (dispatch: any) => {
     return dispatch( {
       type: REDUCE_QUANTITY,
       itemId: itemId
@@ -115,7 +115,7 @@ export const reduceQuantity = ( itemId ) => {
 };
 
 export const fetchFromLocalStorage = () => {
-  return dispatch => {
+  return (dispatch: any) => {
     return dispatch( {
       type: FETCH_FROM_STORAGE
     } );
@@ -123,15 +123,15 @@ export const fetchFromLocalStorage = () => {
 };
 
 export const pushToLocalStorage = () => {
-  return dispatch => {
+  return (dispatch: any) => {
     return dispatch( {
       type: PUSH_TO_STORAGE
     } );
   };
 };
 
-export const setSort = ( sortedBy ) => {
-  return dispatch => {
+export const setSort = ( sortedBy: string ) => {
+  return (dispatch: any) => {
     return dispatch( {
       type: SET_SORT,
       sortedBy: sortedBy
