@@ -54,7 +54,7 @@ class Catalog extends React.Component<ICatalog & ICatalogProps> {
   }
 }
 
-const mapStateToProps = ( state: ICatalogState ): ICatalog => {
+const mapStateToProps = ( state: ICatalogState ) => {
   const { cart, sortedBy, sortOrder } = state.shop;
   const sortedCart = getSortedFullDataCart( cart, sortedBy, sortOrder );
   const cartSize = getCartSize( sortedCart );
@@ -72,4 +72,4 @@ const mapDispatchToProps = ( dispatch: Dispatch<IAction> ) => bindActionCreators
   },
   dispatch );
 
-export default connect<ICatalog, ICatalogProps>( mapStateToProps, mapDispatchToProps )( Catalog );
+export default connect( mapStateToProps, mapDispatchToProps )( Catalog );

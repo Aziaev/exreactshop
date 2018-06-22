@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import { Button } from 'react-materialize';
 import { ASC } from '../constants/index';
 
-export default function (props) {
+export default function (props: any) {
   const { fieldName, setSort, sortedBy, sortOrder } = props;
   return (
     <th data-field={fieldName}>

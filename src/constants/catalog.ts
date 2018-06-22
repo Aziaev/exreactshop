@@ -4,7 +4,9 @@ import i8plusG from '../assets/img/iphone 8plus gold.jpeg';
 import ixb from '../assets/img/iphone x black.jpeg';
 import ixw from '../assets/img/iphone x white.jpeg';
 
+// tslint:disable-next-line
 const iphone8description = 'iPhone 8 introduces an all‑new glass design. The world’s most popular camera, now even better. The most powerful and smartest chip ever in a smartphone. Wireless charging that’s truly effortless. And augmented reality experiences never before possible. iPhone 8. A new generation of iPhone.';
+// tslint:disable-next-line
 const iphoneXdescription = 'Our vision has always been to create an iPhone that is entirely screen. One so immersive the device itself disappears into the experience. And so intelligent it can respond to a tap, your voice, and even a glance. With iPhone X, that vision is now a reality. Say hello to the future.';
 const iphoneXTitle = 'iPhone X. Say hello to the future.';
 const iphone8Title = 'iPhone 8. A beautiful mind.';

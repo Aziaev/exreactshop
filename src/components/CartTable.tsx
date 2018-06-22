@@ -1,24 +1,24 @@
-import React from 'react';
+import * as React from 'react';
 import { Button, Icon, Table } from 'react-materialize';
 import CartTableQuantityTd from './CartTableQuantityTd';
-import TableHeaderWithButton from './HeaderButton';
+import CartTableHeaderButton from './CartTableHeaderButton';
 
-export default function (props) {
+export default function ( props: any ) {
   const { cart, reduceQuantity, addToCart, removeFromCart } = props;
 
   return (
     <Table hoverable centered>
       <thead>
       <tr>
-        <TableHeaderWithButton fieldName={"name"} {...props}/>
-        <TableHeaderWithButton fieldName={"quantity"} {...props}/>
-        <TableHeaderWithButton fieldName={"price"} {...props}/>
+        <CartTableHeaderButton fieldName={'name'} {...props}/>
+        <CartTableHeaderButton fieldName={'quantity'} {...props}/>
+        <CartTableHeaderButton fieldName={'price'} {...props}/>
         {removeFromCart && <th data-field="control"><Button flat disabled>Remove</Button></th>}
       </tr>
       </thead>
       <tbody>
       {
-        cart.map((product, index) =>
+        cart.map( ( product: ICartItem, index: number ) =>
           <tr key={index}>
             <td>{product.name}</td>
             <td>
@@ -32,12 +32,12 @@ export default function (props) {
             <td>{`${product.price}₽`}</td>
             {removeFromCart &&
             <td>
-              <Button flat onClick={() => removeFromCart(product.id)}>
+              <Button flat onClick={() => removeFromCart( product.id )}>
                 <Icon>clear</Icon>
               </Button>
             </td>
             }
-          </tr>)
+          </tr> )
       }
       </tbody>
     </Table>

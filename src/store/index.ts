@@ -13,6 +13,12 @@ const middleware = [
   routerMiddleware(history)
 ];
 
+declare global {
+  interface Window { __REDUX_DEVTOOLS_EXTENSION__: any; }
+}
+
+window.__REDUX_DEVTOOLS_EXTENSION__ = window.__REDUX_DEVTOOLS_EXTENSION__ || {};
+
 if (process.env.NODE_ENV === 'development') {
   const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
 

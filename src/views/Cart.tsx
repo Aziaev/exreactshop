@@ -3,14 +3,7 @@ import { Button, Col, Container, Modal, Row } from 'react-materialize';
 import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getCartCost, getCartSize, getSortedFullDataCart } from '../helpers';
-import {
-  addToCart,
-  fetchFromLocalStorage,
-  pushToLocalStorage,
-  reduceQuantity,
-  removeFromCart,
-  setSort
-} from './../modules/shop';
+import * as actions from './../modules/shop';
 import Navigation from '../components/Navigation';
 import CartTable from '../components/CartTable';
 
@@ -82,7 +75,7 @@ class Cart extends React.Component<ICart & ICartProps> {
   }
 }
 
-const mapStateToProps = ( state: ICartState ): ICart => {
+const mapStateToProps = ( state: ICartState ) => {
   const { cart, sortedBy, sortOrder } = state.shop;
   const sortedCart = getSortedFullDataCart( cart, sortedBy, sortOrder );
   const cartSize = getCartSize( sortedCart );
@@ -97,12 +90,12 @@ const mapStateToProps = ( state: ICartState ): ICart => {
 };
 
 const mapDispatchToProps = ( dispatch: Dispatch<IAction> ) => bindActionCreators( {
-  addToCart,
-  fetchFromLocalStorage,
-  pushToLocalStorage,
-  reduceQuantity,
-  removeFromCart,
-  setSort
+  addToCart: actions.addToCart,
+  fetchFromLocalStorage: actions.fetchFromLocalStorage,
+  pushToLocalStorage: actions.pushToLocalStorage,
+  reduceQuantity: actions.reduceQuantity,
+  removeFromCart: actions.removeFromCart,
+  setSort: actions.setSort
 }, dispatch );
 
 export default connect( mapStateToProps, mapDispatchToProps )( Cart );
