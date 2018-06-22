@@ -1,7 +1,11 @@
-interface ICatalogItem {
-  key: number,
+interface ICartItem {
   id: number,
-  addToCart( id: number ): any;
+  quantity: number,
+  name?: string,
+  title?: string,
+  description?: string,
+  img?: {},
+  price?: number
 }
 
 interface IStockItem {
@@ -9,6 +13,6 @@ interface IStockItem {
   name: string,
   title: string,
   description: string,
-  img: {},
-  price: number
+  img?: {},
+  price?: number
 }

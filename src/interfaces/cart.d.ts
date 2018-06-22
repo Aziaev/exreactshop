@@ -1,26 +1,10 @@
-interface ICart extends ICartState {
-  sortedCart: ICartItem[],
-  cartSize: number,
-  cart: ICartItem[],
-}
-
 interface ICartState extends ICatalogState {
   sortedBy: string,
   sortOrder: string,
-  sortedCart: ICartItem[],
-  cartSize: number,
   cartCost: number,
+  sortedCart: ICartItem[],
   cart: ICartItem[],
-}
-
-interface ICartItem {
-  id: number,
-  quantity: number,
-  name?: string,
-  title?: string,
-  description?: string,
-  img?: {},
-  price?: number
+  stock: IStockItem[],
 }
 
 interface ICartProps {

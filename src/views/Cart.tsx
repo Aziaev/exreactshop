@@ -7,7 +7,7 @@ import * as actions from './../modules/shop';
 import Navigation from '../components/Navigation';
 import CartTable from '../components/CartTable';
 
-class Cart extends React.Component<ICart & ICartProps> {
+class Cart extends React.Component<ICartState & ICartProps> {
   componentWillMount() {
     const { sortedCart, fetchFromLocalStorage } = this.props;
     if ( sortedCart.length === 0 ) {
@@ -15,7 +15,7 @@ class Cart extends React.Component<ICart & ICartProps> {
     }
   }
 
-  componentDidUpdate( prevProps: ICart ) {
+  componentDidUpdate( prevProps: ICartState ) {
     const { sortedCart, pushToLocalStorage } = this.props;
     const prevCart = prevProps.cart;
     if ( prevCart !== sortedCart ) {

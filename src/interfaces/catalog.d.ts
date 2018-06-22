@@ -17,9 +17,8 @@ interface ICatalogState {
   cartSize: number
 }
 
-interface IState {
-  cart: ICartItem[],
-  stock: IStockItem[],
-  sortedBy: string,
-  sortOrder: string
+interface ICatalogItem {
+  key: number,
+  id: number,
+  addToCart( id: number ): any;
 }
