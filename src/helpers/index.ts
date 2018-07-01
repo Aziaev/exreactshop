@@ -74,9 +74,9 @@ const sortCart = ( cart: any, sortedBy: string, sortOrder: string ) => {
   return cart.sort( ( prev: ICartItem, next: ICartItem ): boolean => {
     if ( prev === null || next === null ) {
       return true;
-    } else if ( sortOrder === ASC ) {
-      return prev[ sortedBy ] < next[ sortedBy ];
     } else if ( sortOrder === DESC ) {
+      return prev[ sortedBy ] < next[ sortedBy ];
+    } else if ( sortOrder === ASC ) {
       return prev[ sortedBy ] > next[ sortedBy ];
     }
     return true;
