@@ -37,7 +37,7 @@ class Catalog extends React.Component<ICatalogState & ICatalogProps> {
   render() {
     const { cartSize, stock, addToCart } = this.props;
     return (
-      <div>
+      <Row>
         <Navigation cartSize={cartSize} putToCartRandomly={() => this.putToCartRandomly()}/>
         <Container>
           <Row>
@@ -52,7 +52,7 @@ class Catalog extends React.Component<ICatalogState & ICatalogProps> {
             </Col>
           </Row>
         </Container>
-      </div>
+      </Row>
     );
   }
 }

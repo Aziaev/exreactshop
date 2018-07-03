@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Row } from 'react-materialize';
 import { Route } from 'react-router-dom';
 import Catalog from './views/Catalog';
 import LandingPage from './views/LandingPage';
@@ -9,11 +8,11 @@ class App extends React.Component<{}, {}> {
 
   render() {
     return (
-      <Row>
+      <div>
         <Route exact path="/" component={Catalog}/>
-        <Route exact path="/landing" component={LandingPage}/>
+        <Route exact path="/landing_page" component={LandingPage}/>
         <Route exact path="/cart" component={Cart}/>
-      </Row>
+      </div>
     );
   }
 }

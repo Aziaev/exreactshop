@@ -16,7 +16,7 @@ export default function ( props: any ) {
   return (
     <Navbar left fixed>
       <NavItem><Link to="/">Catalog</Link></NavItem>
-      <NavItem><Link to="/about">Landing page task</Link></NavItem>
+      <NavItem><Link to="/landing_page">Landing page task</Link></NavItem>
       <NavItem><Link style={{ display: 'flex' }} to="/cart"><Icon>shopping_cart</Icon>{`(${cartSize})`}
       </Link></NavItem>
 

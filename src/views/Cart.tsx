@@ -32,7 +32,7 @@ class Cart extends React.Component<ICartState & ICartProps> {
       sortOrder, reduceQuantity, removeFromCart, setSort
     } = this.props;
     return (
-      <div>
+      <Row>
         <Navigation cartSize={cartSize}/>
         <Container>
           <Row>
@@ -73,7 +73,7 @@ class Cart extends React.Component<ICartState & ICartProps> {
             </Col>
           </Row>
         </Container>
-      </div>
+      </Row>
     );
   }
 }
