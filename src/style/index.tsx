@@ -16,12 +16,18 @@ export const HeaderDiv = styled.div`
     font-size: 66px;
     color: #FFFFFF;
     line-height: 110%;
+    @media (max-width: 992px) {
+      font-size: 42px;
+    }
   };
   p {
     font-size: 30px;
-    color: #9B9B9B;
+    color: #BCBCBC;
     opacity: 100%;
     line-height: 130%;
+    @media (max-width: 992px) {
+      font-size: 18px;
+    }
   };
 `;
 
@@ -36,6 +42,9 @@ const HeaderText = styled.span`
   line-height: 146%;
   float: right;
   padding: 9px 0 0 40px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 export const LangSelector = HeaderText.extend`
   color: #FFFFFF;
@@ -66,29 +75,6 @@ export const ComissionDiv = styled.div`
   width: 100%;
 `;
 
-export const ComissionDivZero = styled.div`
-  font-family: 'Circe-Bold';
-  display: table-cell;
-  font-size: 20px;
-  vertical-align: top;
-  span {
-    padding: 15px 0 0 0;
-  };
-`;
-
-export const ComissionDivItem = styled.div`
-  display: table-cell;
-  font-size: 20px;
-  vertical-align: top;
-  padding-top: 18px;
-  padding-left: 150px;
-  p {
-    font-size: 40px;
-    line-height: 120%;
-    text-align: left;
-  };
-`;
-
 export const ComissionDivItemVertical = styled.div`
   font-family: 'Circe-Bold';
   display: table-cell;
@@ -98,6 +84,56 @@ export const ComissionDivItemVertical = styled.div`
 	float: left;
 	margin-left: -95px;
   margin-top: 145px;
+  @media (max-width: 860px) {
+    display: none;
+  }
+`;
+
+export const ComissionDivZero = styled.div`
+  font-family: 'Circe-Bold';
+  display: table-cell;
+  font-size: 20px;
+  vertical-align: top;
+  span {
+    padding: 15px 0 0 0;
+  };
+  @media (max-width: 860px) {
+    p {display: none;}
+    text-align: center;
+    display: block;
+  }
+`;
+
+export const ComissionDivItem = styled.div`
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 150px;
+  @media (max-width: 1200px) {
+    &&& margin-top: 0;
+    font-size: 32px;
+  }
+  @media (max-width: 1024px) {
+    margin-top: 0;
+    padding-left: 100px;
+  }
+  @media (max-width: 860px) {
+    display: block;
+    padding-left: 0;
+  }
+  p {
+    font-size: 40px;
+    line-height: 120%;
+    text-align: left;
+    @media (max-width: 1200px) {
+      font-size: 32px;
+    }
+    @media (max-width: 956px) {
+      font-size: 24px;
+    }
+    @media (max-width: 860px) {
+      text-align: center;
+    }
+  };
 `;
 
 /**
@@ -110,6 +146,11 @@ export const PaymentDiv = styled.div`
   background-color: #dedede;
   margin-bottom: -20px;
   text-align: center;
+  p {
+    @media (max-width: 860px) {
+      display: hidden;
+    }
+  }
 `;
 
 export const PaymentH1 = styled.h1`
@@ -124,7 +165,7 @@ export const PaymentP = styled.p`
 
 export const PaymentInput = styled( Input )`
   :first-child {
-    text-indent: 17px;
+    text-indent: 2rem;
     border: none;
     background-color: #EFEFEF;
     height: 72px;
@@ -145,11 +186,22 @@ export const PaymentImg = styled.img`
   height: 45px;
 `;
 
+export const RowMobile = styled(Row)`
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+export const RowDesktop = styled(Row)`
+  @media (max-width: 769px) {
+    display: none;
+  }
+`;
+
 /**
  * Footer styles
  */
 export const FooterDiv = styled.div`
-  border-top: 1px solid #555555;
   font-size: 16px;
   color: #616161;
   background-color: #000000;
@@ -182,10 +234,34 @@ export const FooterImg = styled.img`
   padding: 20px;
 `;
 
+export const FooterColTerms = styled( Col )`
+  text-align: left;
+  @media (max-width: 992px) {
+    text-align: center;
+  }
+`;
+
+export const FooterColMobileHidden = styled( Col )`
+  text-align: center;
+  @media (max-width: 992px) {
+    display: none;
+  }
+`;
+
+export const FooterColMobileShown = styled( Col )`
+  text-align: center;
+  @media (min-width: 992px) {
+    display: none;
+  }
+  a {
+    margin: 15px;
+  }
+`;
+
 /**
  * Shared elements
  */
-export const SyledButton = styled( Button )`
+export const StyledButton = styled( Button )`
   font-family: 'Circe-Regular';
   margin-top: 15px;
   background-color: #FFCF00;

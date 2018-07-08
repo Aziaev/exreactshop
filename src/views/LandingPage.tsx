@@ -35,6 +35,9 @@ import {
   CustomSocialImg,
   ExnessLink,
   FooterA,
+  FooterColMobileHidden,
+  FooterColMobileShown,
+  FooterColTerms,
   FooterDiv,
   FooterImg,
   FooterLiA,
@@ -49,7 +52,9 @@ import {
   PaymentImg,
   PaymentInput,
   PaymentP,
-  SyledButton
+  RowDesktop,
+  RowMobile,
+  StyledButton
 } from '../style/index';
 import '../assets/css/custom.css';
 import '../assets/fonts/Circe-Light.woff';
@@ -66,9 +71,9 @@ export default () => (
         <NoPaddingCol s={12}>
           <h1>Подлинная свобода распоряжения своими средствами на Форекс</h1>
           <p>Пополняйте счет и выводите прибыль без комиссий</p>
-          <SyledButton flat style={{ width: '304px' }}>
+          <StyledButton flat style={{ width: '304px' }}>
             Пополнить счет<span>❯</span>
-          </SyledButton>
+          </StyledButton>
         </NoPaddingCol>
       </HeaderRow>
     </HeaderDiv>
@@ -94,7 +99,25 @@ export default () => (
             <PaymentH1>Доступные платежные системы</PaymentH1>
           </Col>
         </Row>
-        <Row>
+        <RowMobile>
+          <div style={{ height: '66px' }}>
+            <ColCentered s={1}>
+              <h1>{'<'}</h1>
+            </ColCentered>
+            <ColCentered s={10}>
+              <img style={{ paddingTop: '22px' }} src={uk}/>
+            </ColCentered>
+            <ColCentered s={1}>
+              <h1>{'>'}</h1>
+            </ColCentered>
+          </div>
+          <Col s={6} offset="s3">
+            <StyledButton flat style={{ width: '100%' }}>
+              Открыть счет<span> ❯ </span>
+            </StyledButton>
+          </Col>
+        </RowMobile>
+        <RowDesktop>
           <ColCentered s={12}>
             <PaymentImg src={fp}/>
             <PaymentImg src={cash}/>
@@ -105,16 +128,16 @@ export default () => (
             <PaymentImg src={pspw}/>
             <PaymentImg src={uk}/>
           </ColCentered>
-        </Row>
-        <Row>
+        </RowDesktop>
+        <RowDesktop>
           <PaymentInput s={4} placeholder="Мобильный телефон"/>
           <PaymentInput s={4} placeholder="Адрес электронной почты"/>
           <Col s={4}>
-            <SyledButton flat style={{ width: '100%' }}>
+            <StyledButton flat style={{ width: '100%' }}>
               Пополнить счет<span> ❯ </span>
-            </SyledButton>
+            </StyledButton>
           </Col>
-        </Row>
+        </RowDesktop>
         <Row>
           <Col s={6} offset="s3">
             <PaymentP>По некоторым <a href="/">способам ввода/вывода средств</a> действуют ог
@@ -141,10 +164,20 @@ export default () => (
         </Row>
       </Container>
     </FooterDiv>
-    <FooterDiv>
+    <FooterDiv style={{paddingTop: '0px', paddingBottom: '40px'}}>
+      <Container>
+        <FooterColMobileShown>
+          <FooterLiAWhite href="/">О компании</FooterLiAWhite>
+          <FooterLiAWhite href="/">Торговля</FooterLiAWhite>
+          <FooterLiAWhite href="/">Инструменты</FooterLiAWhite>
+          <FooterLiAWhite href="/">Партнерство</FooterLiAWhite>
+        </FooterColMobileShown>
+      </Container>
+    </FooterDiv>
+    <FooterDiv style={{ borderTop: '1px solid #555555' }}>
       <Container>
         <Row>
-          <Col m={2}>
+          <FooterColMobileHidden l={2}>
             <ul className="footer-navList">
               <li>
                 <FooterLiAWhite href="/">О компании</FooterLiAWhite>
@@ -153,8 +186,8 @@ export default () => (
                 <FooterLiA href="/">{item}</FooterLiA>
               </li> )}
             </ul>
-          </Col>
-          <Col m={3}>
+          </FooterColMobileHidden>
+          <FooterColMobileHidden l={3}>
             <ul className="footer-navList">
               <li>
                 <FooterLiAWhite href="/">Торговля</FooterLiAWhite>
@@ -163,8 +196,8 @@ export default () => (
                 <FooterLiA href="/">{item}</FooterLiA>
               </li> )}
             </ul>
-          </Col>
-          <Col m={2}>
+          </FooterColMobileHidden>
+          <FooterColMobileHidden l={2}>
             <ul className="footer-navList">
               <li>
                 <FooterLiAWhite href="/">Инструменты</FooterLiAWhite>
@@ -172,35 +205,35 @@ export default () => (
               {instruments.map( ( item, index ) => <li key={index}>
                 <FooterLiA href="/">{item}</FooterLiA></li> )}
             </ul>
-          </Col>
-          <Col m={2}>
+          </FooterColMobileHidden>
+          <FooterColMobileHidden l={2}>
             <ul className="footer-navList" style={{ paddingTop: '25px' }}>
               {analytics.map( ( item, index ) => <li key={index}>
                 <FooterLiA href="/">{item}</FooterLiA>
               </li> )}
             </ul>
-          </Col>
-          <Col m={1}>
+          </FooterColMobileHidden>
+          <FooterColMobileHidden l={1}>
             <ul className="footer-navList">
               {faq.map( ( item, index ) => <li key={index}>
                 <FooterLiAWhite href="/">{item}</FooterLiAWhite>
               </li> )}
             </ul>
-          </Col>
+          </FooterColMobileHidden>
         </Row>
         <Row>
-          <Col m={8}>
+          <FooterColTerms l={8}>
             <FooterP>{footerText[ 0 ]}</FooterP>
             <FooterP>{footerText[ 1 ]} <FooterA href="/">Подробнее</FooterA></FooterP>
             <FooterP>{footerText[ 2 ]}</FooterP>
-          </Col>
-          <ColCentered m={4}>
+          </FooterColTerms>
+          <FooterColMobileHidden l={4}>
             <FooterImg src={sysec}/>
             <FooterImg src={beliz}/>
             <FooterImg src={nqa}/>
             <FooterImg src={sm} style={{ paddingBottom: '40px' }}/>
             <FooterImg src={cascade}/>
-          </ColCentered>
+          </FooterColMobileHidden>
         </Row>
       </Container>
     </FooterDiv>
