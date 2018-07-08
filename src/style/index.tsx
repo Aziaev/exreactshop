@@ -59,6 +59,27 @@ export const CounterSink = styled.span`
   color: #AAAAAA;
 `;
 
+export const StyledButtonHeader = styled( Button )`
+  font-family: 'Circe-Regular';
+  margin-top: 15px;
+  background-color: #FFCF00;
+  height: 72px;
+  text-align: left;
+  font-size: 11px;
+  padding: 0 2rem;
+  width: 304px;
+  span {
+    padding-left: 5px;
+    float: right;
+  }
+  :hover {
+    background-color: #FFCF00;
+  }
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+`;
+
 /**
  * Comission block styles
  */
@@ -101,6 +122,12 @@ export const ComissionDivZero = styled.div`
     p {display: none;}
     text-align: center;
     display: block;
+  }
+  @media (max-width: 500px) {
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 `;
 
@@ -187,13 +214,13 @@ export const PaymentImg = styled.img`
 `;
 
 export const RowMobile = styled(Row)`
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     display: none;
   }
 `;
 
 export const RowDesktop = styled(Row)`
-  @media (max-width: 769px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;
@@ -253,9 +280,15 @@ export const FooterColMobileShown = styled( Col )`
   @media (min-width: 992px) {
     display: none;
   }
-  a {
-    margin: 15px;
-  }
+`;
+
+export const FooterMenuItem = styled.div`
+  display: inline-block;
+  font-family: 'Circe-Bold';
+  font-size: 12px;
+  color: #FFFFFF;
+  text-decoration: none;
+  margin: 2px;
 `;
 
 /**
@@ -280,6 +313,10 @@ export const StyledButton = styled( Button )`
 
 export const CustomSocialImg = styled.img`
   padding: 29px 10px;
+  @media (max-width: 430px) {
+    padding: 15px 5px;
+  }
+  margin-bottom: -1px;
 `;
 
 export const ColCentered = styled( Col )`

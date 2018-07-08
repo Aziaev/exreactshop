@@ -42,6 +42,7 @@ import {
   FooterImg,
   FooterLiA,
   FooterLiAWhite,
+  FooterMenuItem,
   FooterP,
   HeaderDiv,
   HeaderRow,
@@ -54,7 +55,8 @@ import {
   PaymentP,
   RowDesktop,
   RowMobile,
-  StyledButton
+  StyledButton,
+  StyledButtonHeader
 } from '../style/index';
 import '../assets/css/custom.css';
 import '../assets/fonts/Circe-Light.woff';
@@ -71,9 +73,9 @@ export default () => (
         <NoPaddingCol s={12}>
           <h1>Подлинная свобода распоряжения своими средствами на Форекс</h1>
           <p>Пополняйте счет и выводите прибыль без комиссий</p>
-          <StyledButton flat style={{ width: '304px' }}>
+          <StyledButtonHeader flat>
             Пополнить счет<span>❯</span>
-          </StyledButton>
+          </StyledButtonHeader>
         </NoPaddingCol>
       </HeaderRow>
     </HeaderDiv>
@@ -101,14 +103,10 @@ export default () => (
         </Row>
         <RowMobile>
           <div style={{ height: '66px' }}>
-            <ColCentered s={1}>
-              <h1>{'<'}</h1>
-            </ColCentered>
-            <ColCentered s={10}>
-              <img style={{ paddingTop: '22px' }} src={uk}/>
-            </ColCentered>
-            <ColCentered s={1}>
-              <h1>{'>'}</h1>
+            <ColCentered s={12}>
+              <span style={{ float: 'left' }}><h4>{'<'}</h4></span>
+              <img style={{ width: 'auto' }} src={uk}/>
+              <span style={{ float: 'right' }}><h4>{'>'}</h4></span>
             </ColCentered>
           </div>
           <Col s={6} offset="s3">
@@ -148,29 +146,27 @@ export default () => (
       </Container>
     </PaymentDiv>
     <FooterDiv>
-      <Container>
-        <Row>
-          <ColCentered s={12}>
-            <CustomSocialImg src={vklogo}/>
-            <CustomSocialImg src={oklogo}/>
-            <CustomSocialImg src={twitterlogo}/>
-            <CustomSocialImg src={fblogo}/>
-            <CustomSocialImg src={youtubelogo}/>
-            <CustomSocialImg src={linkedlogo}/>
-            <CustomSocialImg src={ksinlogo}/>
-            <CustomSocialImg src={instagramlogo}/>
-            <CustomSocialImg src={gpluslogo}/>
-          </ColCentered>
-        </Row>
-      </Container>
+      <Row>
+        <ColCentered s={12}>
+          <CustomSocialImg src={vklogo}/>
+          <CustomSocialImg src={oklogo}/>
+          <CustomSocialImg src={twitterlogo}/>
+          <CustomSocialImg src={fblogo}/>
+          <CustomSocialImg src={youtubelogo}/>
+          <CustomSocialImg src={linkedlogo}/>
+          <CustomSocialImg src={ksinlogo}/>
+          <CustomSocialImg src={instagramlogo}/>
+          <CustomSocialImg src={gpluslogo}/>
+        </ColCentered>
+      </Row>
     </FooterDiv>
-    <FooterDiv style={{paddingTop: '0px', paddingBottom: '40px'}}>
+    <FooterDiv style={{ paddingBottom: '40px' }}>
       <Container>
         <FooterColMobileShown>
-          <FooterLiAWhite href="/">О компании</FooterLiAWhite>
-          <FooterLiAWhite href="/">Торговля</FooterLiAWhite>
-          <FooterLiAWhite href="/">Инструменты</FooterLiAWhite>
-          <FooterLiAWhite href="/">Партнерство</FooterLiAWhite>
+          <FooterMenuItem>О компании</FooterMenuItem>
+          <FooterMenuItem>Торговля</FooterMenuItem>
+          <FooterMenuItem>Инструменты</FooterMenuItem>
+          <FooterMenuItem>Партнерство</FooterMenuItem>
         </FooterColMobileShown>
       </Container>
     </FooterDiv>
