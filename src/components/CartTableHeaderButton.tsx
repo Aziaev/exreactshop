@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from 'react-materialize';
-import { ASC } from '../constants/index';
+import { DESC } from '../constants/index';
 
 /**
  * Кнопки сортировки в шапке таблицы
@@ -13,20 +13,20 @@ import { ASC } from '../constants/index';
  *
  * @returns - рендерит кнопку сортировки
  */
-export default function (props: any) {
+export default function ( props: any ) {
   const { fieldName, setSort, sortedBy, sortOrder } = props;
   return (
     <th data-field={fieldName}>
       <Button
         flat
-        onClick={() => setSort(fieldName)}
+        onClick={() => setSort( fieldName )}
         disabled={!setSort}
       >
         {fieldName} {sortedBy === fieldName &&
-          <span>
-            {sortOrder === ASC ? <span>&#x25BC;</span> : <span>&#x25B2;</span>}
+      <span>
+            {sortOrder === DESC ? <span>&#x25BC;</span> : <span>&#x25B2;</span>}
           </span>
-        }
+      }
       </Button>
     </th>
   );

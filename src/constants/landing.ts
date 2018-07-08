@@ -1,36 +1,35 @@
-const footerAbout = [
-  'О компании',
+const about = [
+  '',
   'Общие сведения',
   'Почему Exness?',
-  'Менеджмент группы компаний Exness',
+  'Менеджмент',
   'Регуляция',
-  'Служба поддержки'
+  'Служба поддержки клиентов'
 ];
 
-const footerTrading = [
-  'Торговля',
+const trading = [
   'Открыть торговый счет',
   'Пополнение и снятие средств',
   'Спецификации контрактов',
   'Правила предоставления кредитного плеча'
 ];
 
-const footerInstruments = [
-  'Инструменты',
-  'MetaTrader',
-  'MetaTrader',
-  'Мобильные платформы',
-  'Экономический календарь'
+const instruments = [
+  'MetaTrader 4',
+  'MetaTrader 5',
+  'Webtrader',
+  'Мобильные платформы'
 ];
 
-const footerAnalytics = [
+const analytics = [
+  'Экономический календарь',
   'Аналитика',
-  'Web TV',
   'Калькулятор трейдера/Конвертер валют',
   'Загрузки'
 ];
 
-const footerLinks = [
+const faq = [
+  'Партнерство',
   'Библиотека',
   'FAQ'
 ];
@@ -44,10 +43,10 @@ const footerText = [
 ];
 
 export {
-  footerAbout,
-  footerTrading,
-  footerInstruments,
-  footerAnalytics,
-  footerLinks,
+  about,
+  trading,
+  instruments,
+  analytics,
+  faq,
   footerText
 };

@@ -1,7 +1,58 @@
-.custom nav .brand-logo {
-    margin: 48px 0 0 56px;
+@font-face {
+    font-family: 'Circe-Regular';
+    src: url('../fonts/Circe-Regular.eot');
+    src: local('Circe'), local('Circe-Regular'),
+    url('../fonts/Circe-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Circe-Regular.woff') format('woff'),
+    url('../fonts/Circe-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-.custom nav ul {
-    margin: 48px 0 0 0;
+@font-face {
+    font-family: 'Circe-ExtraLight';
+    src: url('../fonts/Circe-ExtraLight.eot');
+    src: local('Circe ExtraLight'), local('Circe-ExtraLight'),
+    url('../fonts/Circe-ExtraLight.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Circe-ExtraLight.woff') format('woff'),
+    url('../fonts/Circe-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circe-Thin';
+    src: url('../fonts/Circe-Thin.eot');
+    src: local('Circe Thin'), local('Circe-Thin'),
+    url('../fonts/Circe-Thin.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Circe-Thin.woff') format('woff'),
+    url('../fonts/Circe-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circe-Light';
+    src: url('../fonts/Circe-Light.eot');
+    src: local('Circe Light'), local('Circe-Light'),
+    url('../fonts/Circe-Light.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Circe-Light.woff') format('woff'),
+    url('../fonts/Circe-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circe-Bold';
+    src: url('../fonts/Circe-Bold.eot');
+    src: local('Circe Bold'), local('Circe-Bold'),
+    url('../fonts/Circe-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Circe-Bold.woff') format('woff'),
+    url('../fonts/Circe-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
+    border-bottom: none;
 }
